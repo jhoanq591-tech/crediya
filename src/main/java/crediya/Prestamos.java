@@ -3,6 +3,7 @@ package crediya;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -141,6 +142,24 @@ public class Prestamos {
             mostrarPrestamosDe(id);
         }
     }
+    
+    public void filtrarPrestamosVencidos() throws SQLException, Exception {
+        ArrayList<Integer> ids = new ArrayList<>();
+        try (Connection con = conexion.conectar();
+             PreparedStatement ps = con.prepareStatement("SELECT id,  FROM prestamos WHERE estado = cancelado");
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                ids.add(rs.getInt("estado"));
+            }
+        } catch (Exception e) {
+            System.out.println("Error al listar clientes: " + e.getMessage());
+        }
+
+        for (int id : ids) {
+            mostrarPrestamosDe(id);
+        }
+    }
+
 
     // Administrador: pide el ID de un cliente y muestra solo sus prestamos
     public void verPrestamosDeUnCliente() {

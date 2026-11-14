@@ -29,6 +29,11 @@ public class Login {
         String sql = "SELECT id, nombre FROM empleados WHERE documento = ? AND clave = ? AND rol = 'Administrador'";
         return buscar(sql);
     }
+    
+    public int ingresarExamen() {
+        String sql = "SELECT id, nombre FROM empleados WHERE documento = ? AND clave = ? AND rol = 'Administrador'";
+        return buscar(sql);
+    }
 
     private int buscar(String sql) {
         System.out.print("Documento: ");

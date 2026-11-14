@@ -34,7 +34,7 @@ public class Reportes {
         try (Connection con = conexion.conectar();
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
-            System.out.println("--- PRESTAMOS MOROSOS (aprobados con mas de 30 dias) ---");
+            System.out.println("--- PRESTAMOS Vencidos (aprobados con mas de 30 dias) ---");
             while (rs.next()) {
                 System.out.println("Prestamo " + rs.getInt("id") + " | " + rs.getString("cliente")
                         + " | $" + rs.getDouble("monto") + " | desde " + rs.getDate("fecha_inicio"));

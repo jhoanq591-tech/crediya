@@ -7,13 +7,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Login login = new Login(sc);
+        Reportes reportes = new Reportes();
 
         int opcion = -1;
         while (opcion != 0) {
             System.out.println("\n===== CREDIYA S.A.S. =====");
-            System.out.println("1. Ingresar como cliente");
-            System.out.println("2. Ingresar como administrador");
-            System.out.println("0. Salir");
+            System.out.println("1. Ingresar como cliente.");
+            System.out.println("2. Ingresar como administrador.");
+            System.out.println("3. Examen.");
+            System.out.println("0. Salir.");
             System.out.print("Elija una opcion: ");
 
             try {
@@ -35,6 +37,9 @@ public class Main {
                         menuAdministrador(sc, administradorId);
                     }
                     break;
+                case 3:
+                    menuReportes(sc, reportes);
+                    break;      
                 case 0:
                     System.out.println("Hasta pronto.");
                     break;
@@ -94,7 +99,7 @@ public class Main {
             System.out.println("2. Clientes");
             System.out.println("3. Prestamos");
             System.out.println("4. Pagos");
-            System.out.println("5. Reportes");
+            System.out.println("5. Reportes prestamos activos y vencidos");
             System.out.println("0. Cerrar sesion");
             System.out.print("Elija una opcion: ");
 
